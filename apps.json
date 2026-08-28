@@ -1,14 +1,14 @@
 [
   {
     "name": "Telegram",
-    "package_name": "org.telegram.messenger",
+    "package_name": "org.telegram.messenger.web",
     "version": "12.10.1",
-    "version_code": 70382,
+    "version_code": 70389,
     "description": "Мессенджер с облачной синхронизацией",
-    "apk_file": "org.telegram.messenger_70382.apk",
-    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/org.telegram.messenger_70382.apk",
-    "size_mb": 119.38,
-    "icon": "/icons/org.telegram.messenger.png",
+    "apk_file": "org.telegram.messenger.web_70389.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/org.telegram.messenger.web_70389.apk",
+    "size_mb": 69.65,
+    "icon": "/icons/org.telegram.messenger.web.png",
     "screenshots": []
   },
   {

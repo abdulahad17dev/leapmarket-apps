@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Telegram",
+    "package_name": "org.telegram.messenger",
+    "version": "12.10.1",
+    "version_code": 70382,
+    "description": "Мессенджер с облачной синхронизацией",
+    "apk_file": "org.telegram.messenger_70382.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/org.telegram.messenger_70382.apk",
+    "size_mb": 119.38,
+    "icon": "/icons/org.telegram.messenger.png",
+    "screenshots": []
+  },
+  {
+    "name": "Антирадар",
+    "package_name": "com.mybedy.antiradar.rustore",
+    "version": "4.0.134-RuStore",
+    "version_code": 40134,
+    "description": "Предупреждения о камерах и ограничениях скорости",
+    "apk_file": "com.mybedy.antiradar.rustore_40134_rs.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/com.mybedy.antiradar.rustore_40134_rs.apk",
+    "size_mb": 67.55,
+    "icon": "/icons/com.mybedy.antiradar.rustore.png",
+    "screenshots": []
+  },
+  {
+    "name": "Эквалайзер",
+    "package_name": "com.jazibkhan.equalizer",
+    "version": "6.1.0",
+    "version_code": 202,
+    "description": "Эквалайзер и усилитель баса для аудио",
+    "apk_file": "com.jazibkhan.equalizer_6.1.0.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/com.jazibkhan.equalizer_6.1.0.apk",
+    "size_mb": 13.8,
+    "icon": "/icons/com.jazibkhan.equalizer.png",
+    "screenshots": []
+  },
+  {
+    "name": "Яндекс Браузер",
+    "package_name": "com.yandex.browser",
+    "version": "26.8.1.121",
+    "version_code": 1927563154,
+    "description": "Браузер с защитой соединения и переводчиком",
+    "apk_file": "com.yandex.browser_1927563154_rs.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/com.yandex.browser_1927563154_rs.apk",
+    "size_mb": 286.57,
+    "icon": "/icons/com.yandex.browser.png",
+    "screenshots": []
+  },
+  {
+    "name": "Яндекс Карты",
+    "package_name": "ru.yandex.yandexmaps",
+    "version": "30.5.1",
+    "version_code": 739612710,
+    "description": "Карты, поиск мест и общественный транспорт",
+    "apk_file": "ru.yandex.yandexmaps_739612710_rs.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/ru.yandex.yandexmaps_739612710_rs.apk",
+    "size_mb": 354.96,
+    "icon": "/icons/ru.yandex.yandexmaps.webp",
+    "screenshots": []
+  },
+  {
+    "name": "Яндекс Музыка",
+    "package_name": "ru.yandex.music",
+    "version": "2026.08.3 #161rur",
+    "version_code": 24026431,
+    "description": "Музыкальный стриминг-сервис от Яндекса",
+    "apk_file": "yandex-music-2026-08-3-161rur.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/yandex-music-2026-08-3-161rur.apk",
+    "size_mb": 43.51,
+    "icon": "/icons/ru.yandex.music.png",
+    "screenshots": []
+  },
+  {
+    "name": "Яндекс Навигатор",
+    "package_name": "ru.yandex.yandexnavi",
+    "version": "30.5.1",
+    "version_code": 739612720,
+    "description": "Навигация с пробками и голосовыми подсказками",
+    "apk_file": "ru.yandex.yandexnavi_739612720_rs.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/ru.yandex.yandexnavi_739612720_rs.apk",
+    "size_mb": 346.87,
+    "icon": "/icons/ru.yandex.yandexnavi.png",
+    "screenshots": []
+  }
+]

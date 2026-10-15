@@ -13,6 +13,9 @@ Railway settings
   Public HTTP port: 8080; server also honours the PORT environment variable
   Start command: leave empty to use the Dockerfile CMD
   No database, volume or runtime secret is required by this read-only service.
+  Optional DATA_DIR=/data enables a persistent catalog.json file and uploaded assets.
+  The server reloads catalog.json when it changes. All HTTP endpoints remain read-only.
+  There is no web administration page or management API on the public server.
 
 APK storage
   The image contains all catalog APKs. Service restarts do not download them.

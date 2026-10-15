@@ -56,3 +56,20 @@ test('incomplete APK prevents service readiness', async () => {
     await assert.rejects(createMarketServer(root), /ENOENT/);
   } finally { await cleanup(root); }
 });
+
+test('read-only service reloads an externally updated persistent catalog', async t => {
+  const root = await mkdtemp(join(tmpdir(), 'redmarket-test-'));
+  const data = join(root, 'data'); await mkdir(data);
+  await mkdir(join(root, 'apks')); await writeFile(join(root, 'apks', 'demo.apk'), '0123456789');
+  const app = { name: 'First', apk_url: '/apks/demo.apk', icon: '', size_bytes: 10, sha256: 'test' };
+  await writeFile(join(data, 'catalog.json'), JSON.stringify({ apps: [app] }));
+  const server = await createMarketServer(root, data);
+  await new Promise(r => server.listen(0, '127.0.0.1', r));
+  t.after(async () => { server.closeAllConnections(); await new Promise(r => server.close(r)); await cleanup(root); });
+  const base = `http://127.0.0.1:${server.address().port}`;
+  assert.equal((await (await fetch(base + '/apps.json')).json())[0].name, 'First');
+  await writeFile(join(data, 'catalog.json'), JSON.stringify({ apps: [{ ...app, name: 'Updated catalog' }] }));
+  assert.equal((await (await fetch(base + '/apps.json')).json())[0].name, 'Updated catalog');
+  assert.equal((await fetch(base + '/admin')).status, 404);
+  assert.equal((await fetch(base + '/admin/api/apps', { method: 'POST' })).status, 405);
+});

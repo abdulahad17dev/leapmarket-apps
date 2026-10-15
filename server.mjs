@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { createReadStream } from 'node:fs';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, stat, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve, extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -10,17 +10,28 @@ const contentTypes = {
   '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
 };
 
-export async function createMarketServer(directory) {
+export async function createMarketServer(directory, dataDirectory = process.env.DATA_DIR) {
   const root = resolve(directory);
-  const catalog = await readFile(resolve(root, 'apps.json'));
-  const apps = JSON.parse(catalog);
+  const dataRoot = dataDirectory ? resolve(dataDirectory) : null;
+  const catalogFile = dataRoot ? resolve(dataRoot, 'catalog.json') : resolve(root, 'apps.json');
+  let snapshot, stamp, loading;
+  async function load() {
+  const info = await stat(catalogFile);
+  const parsed = JSON.parse(await readFile(catalogFile));
+  const apps = Array.isArray(parsed) ? parsed : parsed.apps;
+  if (!Array.isArray(apps)) throw new Error('Invalid catalog');
+  const catalog = Buffer.from(JSON.stringify(apps, null, 2) + '\n');
   const routes = new Map();
   for (const app of apps) {
-    for (const route of [app.apk_url, app.icon, ...(app.screenshots || [])]) {
+    for (const route of [app.apk_url, app.icon, ...(app.screenshots || [])].filter(Boolean)) {
       if (!/^\/(apks|icons|screenshots)\/[A-Za-z0-9_.-]+$/.test(route)) {
         throw new Error(`Catalog contains a non-local or invalid asset path: ${route}`);
       }
-      const file = resolve(root, '.' + route);
+      let file = resolve(root, '.' + route);
+      if (dataRoot) {
+        const uploaded = resolve(dataRoot, '.' + route);
+        try { await access(uploaded); file = uploaded; } catch (error) { if (error.code !== 'ENOENT') throw error; }
+      }
       const info = await stat(file);
       if (!info.isFile()) throw new Error(`Not a file: ${route}`);
       if (route === app.apk_url && info.size !== app.size_bytes) throw new Error(`Wrong APK size: ${route}`);
@@ -31,8 +42,12 @@ export async function createMarketServer(directory) {
     }
   }
   const catalogTag = `"${createHash('sha256').update(catalog).digest('hex')}"`;
+  snapshot = { apps, catalog, routes, catalogTag };
+  stamp = `${info.mtimeMs}:${info.size}`;
+  }
+  await load();
 
-  return createServer((req, res) => {
+  return createServer(async (req, res) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     const send = (code, body, type = 'application/json; charset=utf-8') => {
       const bytes = Buffer.from(body);
@@ -46,6 +61,14 @@ export async function createMarketServer(directory) {
     let path;
     try { path = decodeURIComponent((req.url || '/').split('?')[0]); }
     catch { return send(400, '{"error":"Invalid path"}'); }
+    try {
+      const info = await stat(catalogFile);
+      if (`${info.mtimeMs}:${info.size}` !== stamp) {
+        if (!loading) loading = load().finally(() => { loading = null; });
+        await loading;
+      }
+    } catch (error) { console.error('Catalog reload failed:', error.code || error.name); }
+    const { apps, catalog, routes, catalogTag } = snapshot;
     if (path === '/healthz') {
       res.setHeader('Cache-Control', 'no-store');
       return send(200, JSON.stringify({ status: 'ok', apps: apps.length }));

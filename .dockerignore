@@ -1,0 +1,6 @@
+.git
+.railway
+.env*
+public
+node_modules
+*.log

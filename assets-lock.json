@@ -1,0 +1,30 @@
+{
+  "com.jazibkhan.equalizer_6.1.0.apk": {
+    "sha256": "f0ede1ea5adf057a6e3ace17cef72e9cb0eb0b74585272053ac18b9c66686c31",
+    "size": 14473596
+  },
+  "com.mybedy.antiradar.rustore_40134_rs.apk": {
+    "sha256": "e6ede817c4a0f008d1d346975902af5061a8287aa6bec6540bb5c6edf957972a",
+    "size": 70835501
+  },
+  "com.yandex.browser_1927563154_rs.apk": {
+    "sha256": "23f5653abcb31cc6eefadeb39b7e94dfeb4285f5c00a09272f13145d859e6409",
+    "size": 300495157
+  },
+  "org.telegram.messenger.web_70389.apk": {
+    "sha256": "f5e1192725772960cc94b83e54ffd8939f876b2b6e5f21d4a8537eb6fcba50e6",
+    "size": 73028244
+  },
+  "ru.yandex.yandexmaps_739612710_rs.apk": {
+    "sha256": "f7437fd6ff4adb3d6208fee187c3bac106938c272d7fc453bfbea6776d841e07",
+    "size": 372201486
+  },
+  "ru.yandex.yandexnavi_739612720_rs.apk": {
+    "sha256": "888fc5460eefd4d187d65f7e99cef6f2b970450bf49855df232773955bc351c6",
+    "size": 363719001
+  },
+  "yandex-music-2026-08-3-161rur.apk": {
+    "sha256": "286f6cea9643182d3c47d6a63e1e1f8229450fde6f7011148fccdc0cb68e5ca2",
+    "size": 45619980
+  }
+}

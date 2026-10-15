@@ -1,0 +1,42 @@
+RedMarket on Railway
+
+Runtime
+  GET /apps.json       Catalog with local /apks/ and /icons/ links
+  GET /apks/<file>     APK download, HEAD and byte ranges supported
+  GET /icons/<file>    Catalog icons
+  GET /healthz        Returns 200 after all catalog files are present
+
+Railway settings
+  Source: abdulahad17dev/leapmarket-apps, branch main, root /
+  Builder: Dockerfile (Dockerfile in repository root)
+  Healthcheck: /healthz, timeout 60 seconds
+  Public HTTP port: 8080; server also honours the PORT environment variable
+  Start command: leave empty to use the Dockerfile CMD
+  No database, volume or runtime secret is required by this read-only service.
+
+APK storage
+  The image contains all catalog APKs. Service restarts do not download them.
+  Phones/head units download catalog, icons and APKs from Railway only.
+  GitHub Releases is used when BUILDING the image, not when serving requests.
+  APK sizes and SHA-256 are pinned in assets-lock.json; a mismatch fails the build.
+  The repository's source apps.json stays compatible with existing GitHub clients.
+  Generated public/apps.json has local APK paths and SHA-256 / size_bytes fields.
+
+Updating catalog/apps
+  1. Upload an APK to this repository's GitHub release named apps.
+  2. Update apps.json and the icon; set apk_file and apk_url to that release asset.
+  3. Record the release asset's exact size and sha256 digest in assets-lock.json.
+  4. Commit and push. Railway builds a new image with those files.
+  Do not commit the generated public/ folder or APK binaries into Git.
+  Screenshots must be packaged locally before adding their routes to apps.json.
+
+Local checks
+  npm test
+  npm run prepare:assets
+  npm start
+  Optional APK_SOURCE_DIR can point to locally downloaded APKs to speed preparation.
+  Unverified local APKs are ignored; the locked release asset is downloaded instead.
+
+Rollback
+  Redeploy a previous successful image in Railway. Original GitHub release assets
+  and apps.json are preserved. Existing clients are not forced to change servers.

@@ -1,0 +1,12 @@
+{
+  "name": "redmarket-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}

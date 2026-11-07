@@ -30,6 +30,13 @@ Updating catalog/apps
   2. Update apps.json and the icon; set apk_file and apk_url to that release asset.
   3. Record the release asset's exact size and sha256 digest in assets-lock.json.
   4. Commit and push. Railway builds a new image with those files.
+  With DATA_DIR enabled, explicit new apps also need an entry in catalog-imports.json
+  (unique id, package_name, exact sha256). Startup imports each entry once, backs up
+  the previous catalog and increments its revision. Existing apps and trash are
+  preserved. APKs/icons are verified and copied to the volume before publication,
+  so a rollback to the previous server image can still serve the added app.
+  Stop other catalog publishing while deploying an import. A changed catalog
+  aborts the import instead of replacing a newer snapshot.
   Do not commit the generated public/ folder or APK binaries into Git.
   Screenshots must be packaged locally before adding their routes to apps.json.
 

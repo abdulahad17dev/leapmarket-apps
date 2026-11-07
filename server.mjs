@@ -4,6 +4,7 @@ import { readFile, stat, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve, extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { importCatalog } from './import-catalog.mjs';
 
 const contentTypes = {
   '.apk': 'application/vnd.android.package-archive',
@@ -124,7 +125,9 @@ export async function createMarketServer(directory, dataDirectory = process.env.
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const port = Number(process.env.PORT || 8080);
   if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Invalid PORT');
-  const server = await createMarketServer(resolve(import.meta.dirname, 'public'));
+  const root = resolve(import.meta.dirname, 'public');
+  await importCatalog(root, process.env.DATA_DIR, resolve(import.meta.dirname, 'catalog-imports.json'));
+  const server = await createMarketServer(root);
   server.listen(port, '0.0.0.0', () => console.log(`RedMarket listening on 0.0.0.0:${port}`));
   for (const signal of ['SIGTERM', 'SIGINT']) {
     process.on(signal, () => {

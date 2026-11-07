@@ -26,5 +26,9 @@
   "yandex-music-2026-08-3-161rur.apk": {
     "sha256": "286f6cea9643182d3c47d6a63e1e1f8229450fde6f7011148fccdc0cb68e5ca2",
     "size": 45619980
+  },
+  "com.google.android.apps.maps_1068856906.apk": {
+    "sha256": "8f3b829bbe8b0dae603f9936861e34ef0d3ff7b443d6446f1b1375bbf08acf7f",
+    "size": 306396273
   }
 }

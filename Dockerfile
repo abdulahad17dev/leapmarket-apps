@@ -8,7 +8,7 @@ RUN npm run prepare:assets
 FROM node:22-alpine
 ENV NODE_ENV=production
 WORKDIR /app
-COPY --chown=node:node package.json server.mjs ./
+COPY --chown=node:node package.json server.mjs import-catalog.mjs catalog-imports.json ./
 COPY --from=assets --chown=node:node /app/public ./public
 USER node
 EXPOSE 8080

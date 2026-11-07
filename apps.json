@@ -82,5 +82,17 @@
     "size_mb": 346.87,
     "icon": "/icons/ru.yandex.yandexnavi.png",
     "screenshots": []
+  },
+  {
+    "name": "Google Maps",
+    "package_name": "com.google.android.apps.maps",
+    "version": "26.44.06.1006895251",
+    "version_code": 1068856906,
+    "description": "Maps, navigation, traffic and places from Google.",
+    "apk_file": "com.google.android.apps.maps_1068856906.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/com.google.android.apps.maps_1068856906.apk",
+    "size_mb": 292.2,
+    "icon": "/icons/com.google.android.apps.maps.png",
+    "screenshots": []
   }
 ]

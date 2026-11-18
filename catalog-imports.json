@@ -3,5 +3,15 @@
     "id": "google-maps-1068856906-20261107",
     "package_name": "com.google.android.apps.maps",
     "sha256": "8f3b829bbe8b0dae603f9936861e34ef0d3ff7b443d6446f1b1375bbf08acf7f"
+  },
+  {
+    "id": "uz-i-tv-player-394-20261118",
+    "package_name": "uz.i_tv.player",
+    "sha256": "3d66e50bbf93e9f54c478b641281175eef199cdc5d76961abb98296a377e4ecc"
+  },
+  {
+    "id": "uz-allplay-app-248020-20261118",
+    "package_name": "uz.allplay.app",
+    "sha256": "103bb91b733438502e92a421ff303bb83b195c12f596a76d2c0cfb773e7b6d4f"
   }
 ]

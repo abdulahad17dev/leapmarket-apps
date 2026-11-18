@@ -94,5 +94,29 @@
     "size_mb": 292.2,
     "icon": "/icons/com.google.android.apps.maps.png",
     "screenshots": []
+  },
+  {
+    "name": "iTV",
+    "package_name": "uz.i_tv.player",
+    "version": "7.9.04",
+    "version_code": 394,
+    "description": "iTV for Android.",
+    "apk_file": "uz.i_tv.player_394.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/uz.i_tv.player_394.apk",
+    "size_mb": 21.57,
+    "icon": "/icons/uz.i_tv.player.png",
+    "screenshots": []
+  },
+  {
+    "name": "Allplay",
+    "package_name": "uz.allplay.app",
+    "version": "7.21.3",
+    "version_code": 248020,
+    "description": "Allplay for Android.",
+    "apk_file": "uz.allplay.app_248020.apk",
+    "apk_url": "https://github.com/abdulahad17dev/leapmarket-apps/releases/download/apps/uz.allplay.app_248020.apk",
+    "size_mb": 50.08,
+    "icon": "/icons/uz.allplay.app.png",
+    "screenshots": []
   }
 ]

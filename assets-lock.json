@@ -30,5 +30,13 @@
   "com.google.android.apps.maps_1068856906.apk": {
     "sha256": "8f3b829bbe8b0dae603f9936861e34ef0d3ff7b443d6446f1b1375bbf08acf7f",
     "size": 306396273
+  },
+  "uz.i_tv.player_394.apk": {
+    "sha256": "3d66e50bbf93e9f54c478b641281175eef199cdc5d76961abb98296a377e4ecc",
+    "size": 22614585
+  },
+  "uz.allplay.app_248020.apk": {
+    "sha256": "103bb91b733438502e92a421ff303bb83b195c12f596a76d2c0cfb773e7b6d4f",
+    "size": 52513176
   }
 }
